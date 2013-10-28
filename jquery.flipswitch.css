@@ -1,10 +1,6 @@
 .onoffswitch {
-    position: relative; width: 125px;
+    position: relative; width: 140px;
     -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
-}
-
-.onoffswitch-checkbox {
-    display: none;
 }
 
 .onoffswitch-label {
@@ -25,14 +21,14 @@
 }
 
 .onoffswitch-inner:before {
-    content: "Включен";
-    padding-left: 8px;
+    content: attr(data-content-before);
+    padding-left: 12px;
     background-color: #99B83D; color: #FFFFFF;
 }
 
 .onoffswitch-inner:after {
-    content: "Выключен";
-    padding-right: 8px;
+    content: attr(data-content-after);
+    padding-right: 7px;
     background-color: #989898; color: #FFFFFF;
     text-align: right;
 }
@@ -41,7 +37,7 @@
     width: 32px; margin: -1px;
     background: #F5F5F5;
     border: 2px solid #F5F5F5; border-radius: 20px;
-    position: absolute; top: 0; bottom: 0; right: 91px;
+    position: absolute; top: 0; bottom: 0; right: 103px;
     -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
     -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
 }
