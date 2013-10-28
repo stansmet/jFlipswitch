@@ -19,12 +19,10 @@
 		}
 
 		var settings = $.extend({
-			onChangeState: function(e) {
-			},
-			onOnState: function() {
-			},
-			onOffState: function() {
-			},
+			onChangeState: undefined,
+			onOnState: undefined,
+			onOffState: undefined,
+
 			onLabel: 'Включено',
 			offLabel: 'Выключено'
 		}, options);
@@ -36,13 +34,20 @@
 				offHandler:settings.onOffState, 
 				anyStateHandler: settings.onChangeState
 			}, function(e) {
-				e.data.anyStateHandler();
 
-				if (this.checked) {
-					e.data.onHandler();
-				} else {
-					e.data.offHandler();
-				}			
+				if ($.isFunction(e.data.anyStateHandler)) {
+					e.data.anyStateHandler.call(this);
+				}
+
+				if (this.checked && 
+					$.isFunction(e.data.onHandler)) {
+
+					e.data.onHandler.call(this);
+				} else if (!this.checked && 
+					$.isFunction(e.data.offHandler)) {
+
+					e.data.offHandler.call(this);
+				}
 			});
 
 			$(this).css('display', 'none');
